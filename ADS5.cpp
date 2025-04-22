@@ -26,9 +26,9 @@ void printShortestPaths(int dist[],  int V, int start) {
 }
 
 void Dijkstra(int graph[MAX_NODES][MAX_NODES], int V, int startNode) {
-    int dist[V];      // Distance from startNode
-    bool visited[V];  // If the node is included in shortest path
-    int parent[V];    // To store the shortest path tree
+    int dist[V];     
+    bool visited[V];  
+    int parent[V];  
 
     for (int i = 0; i < V; i++) {
         dist[i] = INF;
@@ -77,7 +77,7 @@ int main()
         cout << "Enter edge " << i + 1 << " (u v weight): ";
         cin >> u >> v >> weight;
         graph[u][v] = weight;
-        graph[v][u] = weight;  // Remove this line for directed graphs
+        graph[v][u] = weight;  
     }
 
     int startNode;
