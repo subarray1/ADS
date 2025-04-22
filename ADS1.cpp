@@ -153,42 +153,68 @@ public:
 };
 
 int main() {
-	BST b;
+    BST b;
+    int choice;
+    string key, val;
 
-	
-	b.root = b.insert(b.root, "apple", "a fruit");
-	b.root = b.insert(b.root, "book", "a source of knowledge");
-	b.root = b.insert(b.root, "cat", "an animal");
+    do {
+        cout << "\n--- Dictionary Menu ---\n";
+        cout << "1. Insert Word\n";
+        cout << "2. Search Word\n";
+        cout << "3. Delete Word\n";
+        cout << "4. Inorder Traversal\n";
+        cout << "5. Mirror Dictionary (Inorder)\n";
+        cout << "6. Clone Dictionary (Inorder)\n";
+        cout << "7. Level Order Traversal\n";
+        cout << "0. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-	// Search for a word
-	cout << "\nSearching for 'book':\n";
-	b.search("book");
+        switch (choice) {
+            case 1:
+                cout << "Enter word: ";
+                cin >> key;
+                cout << "Enter meaning: ";
+                cin >> val;
+                b.root = b.insert(b.root, key, val);
+                break;
+            case 2:
+                cout << "Enter word to search: ";
+                cin >> key;
+                b.search(key);
+                break;
+            case 3:
+                cout << "Enter word to delete: ";
+                cin >> key;
+                b.root = b.deleteNode(b.root, key);
+                break;
+            case 4:
+                cout << "Inorder Traversal:\n";
+                b.inorder(b.root);
+                break;
+            case 5: {
+                cout << "Mirror of Dictionary (Inorder):\n";
+                Node* mirrorRoot = b.mirror(b.root);
+                b.inorder(mirrorRoot);
+                break;
+            }
+            case 6: {
+                cout << "Cloned Dictionary (Inorder):\n";
+                Node* cloneRoot = b.clone(b.root);
+                b.inorder(cloneRoot);
+                break;
+            }
+            case 7:
+                cout << "Level Order Traversal:\n";
+                b.levelorder();
+                break;
+            case 0:
+                cout << "Exiting...\n";
+                break;
+            default:
+                cout << "Invalid choice!\n";
+        }
+    } while (choice != 0);
 
-	// Display the dictionary using inorder traversal
-	cout << "\nInorder Traversal of Dictionary:\n";
-	b.inorder(b.root);
-
-	// Delete a word
-	cout << "\nDeleting 'apple':\n";
-	b.root = b.deleteNode(b.root, "apple");
-
-	// Display again after deletion
-	cout << "\nInorder Traversal after Deletion:\n";
-	b.inorder(b.root);
-
-	// Create a mirror of the dictionary
-	cout << "\nMirror of Dictionary:\n";
-	Node* mirrorRoot = b.mirror(b.root);
-	b.inorder(mirrorRoot);
-
-	// Clone the dictionary
-	cout << "\nCloned Dictionary:\n";
-	Node* cloneRoot = b.clone(b.root);
-	b.inorder(cloneRoot);
-
-	// Display level order traversal
-	cout << "\nLevel Order Traversal of Original Dictionary:\n";
-	b.levelorder();
-
-	return 0;
+    return 0;
 }
