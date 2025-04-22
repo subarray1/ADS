@@ -6,12 +6,14 @@ class Graph {
     int adj[MAX_NODES][MAX_NODES]; 
     int V;
 
+
 public:
     Graph(int vertices) {
         V = vertices;
         for (int i = 0; i < V; i++)
             for (int j = 0; j < V; j++)
                 adj[i][j] = 0; 
+    }
 
     void addEdge(int u, int v) {
         adj[u][v] = 1;
@@ -42,7 +44,7 @@ public:
 };
 
 int main() {
-    Graph g(6); // Create a graph with 6 vertices (0 to 5)
+    Graph g(6); 
     g.addEdge(0, 1);
     g.addEdge(0, 2);
     g.addEdge(1, 3);
@@ -50,6 +52,6 @@ int main() {
     g.addEdge(2, 5);
 
     cout << "Depth-First Search starting from node 0: ";
-    g.DFS(0); // Perform DFS starting from node 0
+    g.DFS(0); 
     return 0;
 }
