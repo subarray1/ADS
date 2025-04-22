@@ -16,7 +16,7 @@ void printMST(int parent[],int graph[MAX_NODES][MAX_NODES], int V)
     cout << "Total cost of MST: " << totalCost << endl;
 }
 
-int minKey(int key[], bool visited[], int V) //key holds edge weight and visited shoes if we visited it earlier
+int minKey(int key[], bool visited[], int V) 
 {
     int min = INF, min_index = -1;
     for (int v = 0; v < V; v++) 
@@ -31,11 +31,11 @@ int minKey(int key[], bool visited[], int V) //key holds edge weight and visited
 }
 
 void PrimMST(int graph[MAX_NODES][MAX_NODES], int V, int startNode) {
-    int parent[V];   // Stores the MST
-    int key[V];      // Used to pick minimum weight edge
-    bool visited[V];  // True if node is included in MST
+    int parent[V];   
+    int key[V];      
+    bool visited[V];  
 
-    // Initialize all keys as infinite
+   
     for (int i = 0; i < V; i++) {
         key[i] = INF;
         visited[i] = false;
@@ -43,14 +43,13 @@ void PrimMST(int graph[MAX_NODES][MAX_NODES], int V, int startNode) {
         
     }
 
-    key[startNode] = 0;      // Start node has key 0 so it's picked first
-    parent[startNode] = -1;  // Root node of MST
+    key[startNode] = 0;     
+    parent[startNode] = -1;  
 
     for (int i = 0; i < V - 1; i++) 
     {
         int u = minKey(key, visited, V);
-        if (u == -1) break;  // No valid node found
-
+        if (u == -1) break;  
         visited[u] = true;
 
         for (int i = 0; i < V; i++) {
@@ -85,7 +84,7 @@ int main() {
         cout << "Enter edge " << i + 1 << " (u v weight): ";
         cin >> u >> v >> weight;
         graph[u][v] = weight;
-        graph[v][u] = weight;  // Since the graph is undirected
+        graph[v][u] = weight;  
     }
 
     int startNode;
